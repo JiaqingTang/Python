@@ -1,3 +1,4 @@
+from clkComp import clkCompare
 class BinHeap:
 	def __init__(self):
 		self.heaplist = []
@@ -14,7 +15,10 @@ class BinHeap:
 		self.heaplist.append(val)
 		index = self.size
 		while(index > 0):
-			if self.heaplist[index] < self.heaplist[(index+1) / 2 - 1]:
+			newer = clkCompare(self.heaplist[index].vClock, self.heaplist[(index+1) / 2 - 1].vClock) 
+			if newer == -1:
+				newer = self.heaplist[index].id > self.heaplist[(index+1) / 2 - 1].id
+			if not newer:
 				self.swap(index, (index+1) / 2 - 1)
 			index = (index+1) / 2 - 1
 		self.size += 1
@@ -31,12 +35,19 @@ class BinHeap:
 				min = (index + 1) * 2
 			else:
 				min = (index + 1) * 2  - 1
-
-			if  self.heaplist[min] < self.heaplist[index]:
+			newer = clkCompare(self.heaplist[min].vClock, self.heaplist[index].vClock)
+			if newer == -1:
+				newer = self.heaplist[min].id > self.heaplist[index].id
+			if  not newer:
 				self.swap(index, min)
 				index = min
 			else:
 				break
+	def peek(self):
+		if (self.size == 0):
+			return
+		result = self.heaplist[0]
+
 
 
 if __name__ == "__main__":
