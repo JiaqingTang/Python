@@ -1,3 +1,5 @@
+""" method used for comparing vector clock in distributed system course"""
+
 def clkCompare(lista, listb):
 	length = len(lista)
 	if length != len(listb):

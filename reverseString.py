@@ -1,10 +1,4 @@
-# # def reverseString(str):
-# 	# length = len(str) - 1
-# 	# for i in range(length / 2):
-# 		# tmp = str[length - i]
-# 		# str[length - i] = str[i]
-# 		str[i] = tmp
-# 	# return str
+
 def reverseString(str):
 	if len(str) == 1:
 		return str
@@ -13,6 +7,6 @@ def reverseString(str):
 
 def reverseString1(str):
 	str[::-1]
-
 	return str
+
 print(reverseString1("abcd"))

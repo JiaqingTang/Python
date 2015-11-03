@@ -1,2 +1,0 @@
-def replaceABC(str):
-	
